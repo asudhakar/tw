@@ -1,41 +1,50 @@
-// const express = require('express');
-// var bodyParser = require("body-parser");
-// const app = express();
+const express = require('express')
+const app = express()
+const bodyParser = require('body-parser');
+const shopRoute = require('./routes/shop.route');
 
 
-const Shops = require('./controllers/shop');
-const DishType = require('./controllers/DishType');
+app.use(bodyParser());
 
+app.use('/shop', shopRoute);
 
-let shops = new Shops();
-
-
-
-let dishType = new DishType();
-dishType.add('pastha');
-dishType.add('chettinad');
-shops.newShop('shop1', dishType);
+app.listen(4000);
 
 
 
-let dishType2 = new DishType();
-dishType2.add('pastha');
-dishType2.add('chettinad');
-shops.newShop('shop2', dishType2);
 
-console.log(shops);
+// const Shops = require('./controllers/shop');
+// const DishType = require('./controllers/DishType');
 
-shopID = shops.search('shop1');
-if(shopID){
-    shops.addRatingTo(shopID, 5);
-    shops.addRatingTo(shopID, 4);
-    shops.addRatingTo(shopID, 5);
 
-    console.log(shops.shop[shopID]);
-}else{
-    console.log('not found');
-}
+// let shops = new Shops();
 
+
+
+// let dishType = new DishType();
+// dishType.add('pastha');
+// dishType.add('chettinad');
+// shops.newShop('shop1', dishType);
+
+
+
+// let dishType2 = new DishType();
+// dishType2.add('pastha');
+// dishType2.add('chettinad');
+// shops.newShop('shop2', dishType2);
+
+// console.log(shops);
+
+// shopID = shops.search('shop1');
+// if(shopID){
+//     shops.addRatingTo(shopID, 5);
+//     shops.addRatingTo(shopID, 4);
+//     shops.addRatingTo(shopID, 5);
+
+//     console.log(shops.shop[shopID]);
+// }else{
+//     console.log('not found');
+// }
 
 
 // app.listen(3000, () => {

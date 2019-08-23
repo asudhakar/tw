@@ -1,8 +1,9 @@
 const uuidv1 = require('uuid/v1');
 class User{
     constructor(){
-        this.address = null;
-        this.cart = null;
+        this.address;
+        this.cart;
+        this.order;
     }
 
     Checkout(cart){
