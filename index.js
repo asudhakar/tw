@@ -1,3 +1,8 @@
+// const express = require('express');
+// var bodyParser = require("body-parser");
+// const app = express();
+
+
 const Shops = require('./controllers/shop');
 const DishType = require('./controllers/DishType');
 
@@ -29,3 +34,9 @@ if(shopID){
 }else{
     console.log('not found');
 }
+
+
+// app.listen(3000, () => {
+//     console.log('running on ' + 3000)
+// });
+
