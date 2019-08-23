@@ -1,8 +1,12 @@
 class DishType{
-    constructor(dishType){
-        this.dishType = dishType;
-        // this.shops = [];
+    constructor(){
+        this.dishType = [];
     }
+
+    add(dishType){
+        this.dishType.push(dishType);
+    }
+
 }
 
 module.exports = DishType;

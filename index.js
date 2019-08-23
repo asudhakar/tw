@@ -1,27 +1,31 @@
-const Shop = require('./controllers/shop');
+const Shops = require('./controllers/shop');
 const DishType = require('./controllers/DishType');
-// const Dish = require('./controllers/dish');
 
-let pastha = new DishType('Pastha');
-let chettinad = new DishType('Chettinad');
 
-let shop = new Shop();
-shop.add('EatlyExpress');
-shop.addDishType(pastha);
-shop.addDishType(chettinad);
-
-shop.add('EatlyExpress1');
-shop.addDishType(pastha);
-// shop.addDishType(chettinad);
-
-shop.search(shopName);
-
-console.log(shop);
-
-// function SearchController(input){
-
-// }
+let shops = new Shops();
 
 
 
-// console.log(EatlyExpress);
+let dishType = new DishType();
+dishType.add('pastha');
+dishType.add('chettinad');
+shops.newShop('shop1', dishType);
+
+
+
+let dishType2 = new DishType();
+dishType2.add('pastha');
+dishType2.add('chettinad');
+shops.newShop('shop2', dishType2);
+
+
+shopID = shops.search('shop1');
+if(shopID){
+    shops.addRatingTo(shopID, 5);
+    shops.addRatingTo(shopID, 4);
+    shops.addRatingTo(shopID, 5);
+
+    console.log(shops.shop[shopID]);
+}else{
+    console.log('not found');
+}

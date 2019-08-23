@@ -1,25 +1,29 @@
-class Shop{
-    constructor(shopName){
-        this.shopName = [];
-        this.shopDishType = [];
-        // this.stock = [];
+const uuidv1 = require('uuid/v1');
+class Shops{
+    constructor(){
+        this.shop = [];
     }
 
-    add(shopName){
-        this.shopName.push(shopName);
-    }
-    addDishType(dishType){
-        console.log(this.shopName);
-        // this.shopDishType[this.shopName].push(dishType);
-        // dishType.shops.push(this.shopName);
+    newShop(shopName, dishType){
+        let shopID = uuidv1();
+        this.shop[shopID] = [];
+        this.shop[shopID]['name'] = shopName;
+        this.shop[shopID]['dishType'] = dishType.dishType;
+        this.shop[shopID]['rating'] = [];
     }
 
+    search(shopName){
+        for (var shopID in this.shop) {
+            if (this.shop.hasOwnProperty(shopID)) {
+                if(this.shop[shopID]['name'] == shopName)
+                    return shopID;
+            }
+        }
+    }
 
-    // Stock(dish){
-    //     this.stock.push(dish);
-    //     dish.shops.push(this.shopName);
-    // }
+    addRatingTo(shopID, rating){
+        this.shop[shopID]['rating'].push(rating);
+    }
 
 }
-
-module.exports = Shop;
+module.exports = Shops;
