@@ -23,6 +23,7 @@ dishType2.add('pastha');
 dishType2.add('chettinad');
 shops.newShop('shop2', dishType2);
 
+console.log(shops);
 
 shopID = shops.search('shop1');
 if(shopID){
@@ -34,6 +35,7 @@ if(shopID){
 }else{
     console.log('not found');
 }
+
 
 
 // app.listen(3000, () => {
