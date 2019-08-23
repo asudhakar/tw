@@ -1,17 +1,22 @@
 const Shop = require('./controllers/shop');
-const Dish = require('./controllers/dish');
+const DishType = require('./controllers/DishType');
+// const Dish = require('./controllers/dish');
 
-let pastha = new Dish('Pastha', 'https://abc.com/1.png');
-let chickenCurry = new Dish('Chicken Curry', 'https://abc.com/2.png');
+let pastha = new DishType('Pastha');
+let chettinad = new DishType('Chettinad');
 
-let EatlyExpress = new Shop('EatlyExpress');
-EatlyExpress.Stock(chickenCurry);
-EatlyExpress.Stock(pastha);
+let shop = new Shop();
+shop.add('EatlyExpress');
+shop.addDishType(pastha);
+shop.addDishType(chettinad);
 
-let EatlyExpress1 = new Shop('EatlyExpress1');
-EatlyExpress1.Stock(pastha);
+shop.add('EatlyExpress1');
+shop.addDishType(pastha);
+// shop.addDishType(chettinad);
 
-console.log(dish.search());
+shop.search(shopName);
+
+console.log(shop);
 
 // function SearchController(input){
 
