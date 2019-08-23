@@ -12,6 +12,11 @@ class Shops{
         return this.shops.filter( (shop) => shop.id == id);
     }
 
+    update(id, shop){
+        this.deleteById(id);
+        this.add(shop);
+    }
+
     searchByName(name){
         let shopps = this.shops.filter( (shop) => {
             let str = shop.name.toLowerCase();

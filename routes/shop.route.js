@@ -1,8 +1,9 @@
 const route = require('express').Router();
-const Shops = require('./../controllers/Shops');
-const Shop = require('./../controllers/Shop');
-const Cuisine = require('./../controllers/Cuisine');
-const Dish = require('./../controllers/Dish');
+const Shops = require('./../controllers/shops');
+const Shop = require('./../controllers/shop');
+const Cuisine = require('./../controllers/cuisine');
+const Dish = require('./../controllers/dish');
+const Rating = require('./../controllers/rating')
 const shops = new Shops();
 
 route.get('/', (req, res) => {
@@ -23,18 +24,20 @@ route.get('/', (req, res) => {
     res.send(shops);
 });
 
-
-
-// route.get('/:id', (req, res) => {
-//     res.send(shops.searchById(req.params.id));
-// });
-
-
 route.get('/:name', (req, res) => {
     res.send(shops.searchByName(req.params.name));
 });
 
-
+route.post('/review', (req, res) =>{
+    let rating = new Rating(req.body.rating);
+    if(1 < rating && rating < 5){
+        shop = shops.searchById(req.body.shopId);
+        console.log(shop);
+        shop.rating.push(rating);
+        shops.update(req.body.shopId, shop);
+    }
+    res.send('added');
+});
 
 
 module.exports = route;

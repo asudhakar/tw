@@ -1,6 +1,6 @@
 const uuidv1 = require('uuid/v1');
 class Dish{
-    constructor(name, rate){
+    constructor(id, name, rate){
         this.id = uuidv1();
         this.name = name;
         this.rate = rate;
