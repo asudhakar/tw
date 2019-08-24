@@ -9,7 +9,7 @@ class Shops{
     }
 
     searchById(id){
-        return this.shops.filter( (shop) => shop.id == id)[0];
+        return this.shops.filter( (shop) => shop.id == id);
     }
 
     update(id, shop){

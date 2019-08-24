@@ -4,20 +4,22 @@ class Shop{
         this.id = uuidv1();
         this.name = name;
         this.rating = [];
-        this.avgRating = 0;
-        this.userCount = 0;
+        this.userRatingCount = 0;
         this.cuisine = [];
     }
 
     addRating(rating){
-        if(1 < rating.value && rating.value < 5){
+        if(0 < rating["value"] && rating["value"] < 6){
             this.rating.push(rating);
-            this.calculateAvg();
+            this.addUserRatingCount();
+            return true;
+        }else{
+            return false;
         }
     }
 
-    calculateAvg(){
-        ++this.userCount;
+    addUserRatingCount(){
+        ++this.userRatingCount;
     }
 
     addCuisine(dish){

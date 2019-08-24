@@ -6,7 +6,7 @@ const Dish = require('./../controllers/dish');
 const Rating = require('./../controllers/rating')
 const shops = new Shops();
 
-route.get('/', (req, res) => {
+route.post('/', (req, res) => {
     const fishFry = new Dish('Fish Fry', 100);
     const prawnFry = new Dish('Prawn Fry', 300);
     const omlette = new Dish('Omlette', 20);
@@ -21,6 +21,10 @@ route.get('/', (req, res) => {
     foodAtFinger.addCuisine(seaFoods);
 
     shops.add(foodAtFinger);
+    res.send('added');
+});
+
+route.get('/', (req, res) => {
     res.send(shops);
 });
 
@@ -32,11 +36,14 @@ route.post('/review', (req, res) =>{
     let rating = req.body.rating;
     ratingObj = new Rating(rating);
     shop = shops.searchById(req.body.shopId);
-    if(shop){
-        shop.addRating(ratingObj);
-        res.send('added');
+    if(shop[0]){
+        if(shop[0].addRating(ratingObj)){
+            res.send('added');
+        }else{
+            res.send('please enter rating values properly');
+        }
     }else{
-        res.send('shop not found')
+        res.send('shop not found');
     }
 });
 
