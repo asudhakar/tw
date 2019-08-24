@@ -1,9 +1,18 @@
 const uuidv1 = require('uuid/v1');
 class User{
     constructor(){
-        this.address;
-        this.cart;
-        this.order;
+        this.id
+        this.username;
+        this.password;
+        this.address = [];
+        this.cart = [];
+        this.order = [];
+    }
+
+    add(username, password){
+        this.id = uuidv1();
+        this.username = username;
+        this.password = password;
     }
 
     Checkout(cart){
@@ -23,10 +32,6 @@ class User{
     addAddress(address){
         this.address = address;
     }
-
-
-
-
 }
 
 module.exports = User;

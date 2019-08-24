@@ -37,7 +37,7 @@ route.post('/review', (req, res) =>{
     ratingObj = new Rating(rating);
     shop = shops.searchById(req.body.shopId);
     if(shop[0]){
-        if(shop[0].addRating(ratingObj)){
+        if(shop[0].addRating(ratingObj, userId)){
             res.send('added');
         }else{
             res.send('please enter rating values properly');
