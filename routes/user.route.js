@@ -3,28 +3,50 @@ const Cart = require('./../controllers/cart');
 const Users = require('./../controllers/users');
 const User = require('./../controllers/user');
 
-const users = new Users;
+// const dishes = [
+//     {
+//         "id": "7a4523d1-c622-11e9-b031-7551a4ab25f1",
+//         "name": "Omlette",
+//         "rate": 20
+//     },
+//     {
+//         "id": "7a44fcc0-c622-11e9-b031-7551a4ab25f1",
+//         "name": "Fish Fry",
+//         "rate": 100
+//     },
+//     {
+//         "id": "7a4523d0-c622-11e9-b031-7551a4ab25f1",
+//         "name": "Prawn Fry",
+//         "rate": 300
+//     }
+// ];
 
 route.post('/register', (req, res) => {
     let user = new User();
     user.add(req.body.username, req.body.password);
-    users.add(user);
+    Users.add(user);
     res.send('user registered');
-});
-
-route.get('/', (req, res) => {
-    res.send(users);
 });
 
 
 route.post('/login', (req, res) => {
-    let user = users.login(req.body.username, req.body.password);
-    res.send((user[0])?user.id:'not_authendicated');
+
 });
 
+route.post('/cart', (req, res) => {
+    let cart = new Cart();
+    let dish = getDishByID(req.body.dishId);
+    cart.add(dish);
+    res.send(cart);
+});
 
+route.get('/dish', (req, res) => {
+    res.send(dishes);
+});
 
-
+function getDishByID(id){
+    return dishes.filter( (dish) => dish.id == id);
+}
 
 
 module.exports = route;
