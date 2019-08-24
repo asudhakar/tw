@@ -8,7 +8,7 @@ app.use(bodyParser());
 
 app.use('/shop', shopRoute);
 
-app.listen(4000);
+app.listen(3001);
 
 
 

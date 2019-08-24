@@ -25,18 +25,19 @@ route.get('/', (req, res) => {
 });
 
 route.get('/:name', (req, res) => {
-    res.send(shops.searchByName(req.params.name));
+    res.send(shops.searchById(req.params.name));
 });
 
 route.post('/review', (req, res) =>{
-    let rating = new Rating(req.body.rating);
-    if(1 < rating && rating < 5){
-        shop = shops.searchById(req.body.shopId);
-        console.log(shop);
-        shop.rating.push(rating);
-        shops.update(req.body.shopId, shop);
+    let rating = req.body.rating;
+    ratingObj = new Rating(rating);
+    shop = shops.searchById(req.body.shopId);
+    if(shop){
+        shop.addRating(ratingObj);
+        res.send('added');
+    }else{
+        res.send('shop not found')
     }
-    res.send('added');
 });
 
 

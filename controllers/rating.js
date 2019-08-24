@@ -1,8 +1,8 @@
 const uuidv1 = require('uuid/v1');
 class Rating{
-    constructor(id, rating){
+    constructor(rating){
         this.id = uuidv1();
-        this.rate = rating;
+        this.value = rating;
     }
 }
 
