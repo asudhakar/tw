@@ -31,6 +31,11 @@ class Shops{
         return dishes;
     }
 
+    getDishById(id){
+        dishes = this.getAllDishes();
+        return dishes.filter( (dish) => dish.id == id);
+    }
+
     searchByName(name){
         let shopps = this.shops.filter( (shop) => {
             let str = shop.name.toLowerCase();

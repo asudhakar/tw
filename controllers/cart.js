@@ -7,7 +7,6 @@ class Cart{
 
     add(selectedDish){
         this.dish.push(selectedDish);
-        this.value += selectedDish.price;
     }
 
 

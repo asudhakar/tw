@@ -1,10 +1,8 @@
 const route = require('express').Router();
-const Shops = require('./../controllers/shops');
 const Shop = require('./../controllers/shop');
 const Cuisine = require('./../controllers/cuisine');
 const Dish = require('./../controllers/dish');
 const Rating = require('./../controllers/rating')
-const shops = new Shops();
 
 route.post('/', (req, res) => {
     const fishFry = new Dish('Fish Fry', 100);
