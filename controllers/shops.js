@@ -17,8 +17,18 @@ class Shops{
         this.add(shop);
     }
 
-    getDishes(){
-        return this.shops;
+    getAllDishes(){
+        let dishes = [];
+        for (let shopIndex = 0; shopIndex < this.shops.length; shopIndex++) {
+            let cuisine = this.shops[shopIndex].cuisine;
+            for (let cuisineIndex = 0; cuisineIndex < cuisine.length; cuisineIndex++) {
+                let selectedShopDishes = cuisine[cuisineIndex].dishes;
+                for (let dishIndex = 0; dishIndex < selectedShopDishes.length; dishIndex++) {
+                    dishes.push(selectedShopDishes[dishIndex]);
+                }
+            }
+        }
+        return dishes;
     }
 
     searchByName(name){
@@ -35,21 +45,21 @@ class Shops{
         this.shops = this.shops.filter( (shop) => shop.id != id);
     }
 
-    search(key = ''){
-        const searchedResult = this.shops.filter((shop)=>{
-            if(shopKeyword && shop.getName().lowercase().indexOf(shopKeyword) === -1){
-                return;
-            }
+    // search(key = ''){
+    //     const searchedResult = this.shops.filter((shop)=>{
+    //         if(shopKeyword && shop.getName().lowercase().indexOf(shopKeyword) === -1){
+    //             return;
+    //         }
 
-            const searchedCuisine = shop.getCuisine().filter((cuisine) => {
-                const searchedDishes = cuisine.getDishes().filter((dish) => {
-                    if(dishKeyword && dish.getName().lowercase().indexOf(dishKeyword) === -1){
-                        return;
-                    }
-                })
-            })
-        });
-    }
+    //         const searchedCuisine = shop.getCuisine().filter((cuisine) => {
+    //             const searchedDishes = cuisine.getDishes().filter((dish) => {
+    //                 if(dishKeyword && dish.getName().lowercase().indexOf(dishKeyword) === -1){
+    //                     return;
+    //                 }
+    //             })
+    //         })
+    //     });
+    // }
 }
 
 module.exports = Shops;

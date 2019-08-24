@@ -28,8 +28,8 @@ route.get('/', (req, res) => {
     res.send(shops);
 });
 
-route.get('/:name', (req, res) => {
-    res.send(shops.searchById(req.params.name));
+route.get('/search', (req, res) => {
+    res.send(shops.searchByName(req.params.name));
 });
 
 route.post('/review', (req, res) =>{
@@ -45,6 +45,10 @@ route.post('/review', (req, res) =>{
     }else{
         res.send('shop not found');
     }
+});
+
+route.get('/dishes', (req, res) => {
+    res.send(shops.getAllDishes());
 });
 
 
