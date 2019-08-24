@@ -7,8 +7,16 @@ class Cart{
 
     add(selectedDish){
         this.dish.push(selectedDish);
+        this.updateCartValue();
     }
 
+    updateCartValue(){
+        let total = 0;
+        for (let index = 0; index < this.dish.length; index++) {
+            total += this.dish[index].rate;
+        }
+        this.value = total;
+    }
 
 }
 

@@ -3,13 +3,6 @@ const app = express()
 const bodyParser = require('body-parser');
 const shopRoute = require('./routes/shop.route');
 const userRoute = require('./routes/user.route');
-const Shops = require('./controllers/shops');
-const User = require('./controllers/user');
-
-const shops = new Shops();
-const user = new User();
-
-
 
 
 app.use(bodyParser());
