@@ -17,6 +17,10 @@ class Shops{
         this.add(shop);
     }
 
+    getDishes(){
+        return this.shops;
+    }
+
     searchByName(name){
         let shopps = this.shops.filter( (shop) => {
             let str = shop.name.toLowerCase();
